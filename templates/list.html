@@ -1,0 +1,37 @@
+{% extends "temp.html" %}
+
+{% block name %} Lista dodanych {% endblock %}
+
+{% block content %}
+	<ul>
+		{{ list_values|safe }}
+	</ul>
+{% endblock %}
+
+<!-- list.html -->
+
+<table>
+	<thead>
+	  <tr>
+		<th>Imię</th>
+		<th>Nazwisko</th>
+		<th>Wiek</th>
+		<th>Płeć</th>
+		<th>Akcje</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  {% for osoba in list_values %}
+	  <tr>
+		<td>{{ osoba.imie }}</td>
+		<td>{{ osoba.nazwisko }}</td>
+		<td>{{ osoba.wiek }}</td>
+		<td>{{ osoba.plec }}</td>
+		<td>
+		  <button data-action="edit" data-id="{{ osoba.imie }};{{ osoba.nazwisko }};{{ osoba.wiek }};{{ osoba.plec }}">Edytuj</button>
+		  <button data-action="del" data-id="{{ osoba.imie }};{{ osoba.nazwisko }};{{ osoba.wiek }};{{ osoba.plec }}">Usuń</button>
+		</td>
+	  </tr>
+	  {% endfor %}
+	</tbody>
+  </table>
